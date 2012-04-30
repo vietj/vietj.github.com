@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Julien Viet</title>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="portal,java,javaee,j2ee,opensource,spaz,exoplatform"/>
+<meta name="description" content="Julien Viet's home page"/>
+
+<!-- Open Id -->
+<link href='http://www.myopenid.com/server' rel='openid.server'/>
+<link href='http://openid.familleviet.com/julien' rel='openid.delegate'/>
+
+<!-- CSS -->
+<link href="default.css" rel="stylesheet" type="text/css" />
+
+<!-- JS -->
+<script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script src="js/js-global/FancyZoom.js" type="text/javascript"></script>
+<script src="js/js-global/FancyZoomHTML.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/ui/ui.core.js"></script>
+<script type="text/javascript" src="js/ui/ui.tabs.js"></script>
+<script type="text/javascript">
+
+   function Fader(elt, doFadeIn, doFadeOut, initialize)
+   {
+      var that = this;
+
+      //
+      var initializedCallback = function()
+      {
+         that.status = "hidden";
+         that.update();
+      }
+
+      //
+      var fadeInCallback = function()
+      {
+         that.status = "visible";
+         that.update();
+      }
+
+      //
+      var fadeOutCallback = function()
+      {
+         that.status = "hidden";
+         that.update();
+      }
+
+      //
+      var update = function()
+      {
+         if (this.hovered)
+         {
+            if (this.status == "constructed")
+            {
+               this.status = "constructing";
+               this.initialize.call(elt, initializedCallback);
+            }
+            else if (this.status == "hidden")
+            {
+               this.status = "showing";
+               if (this.doFadeIn.length == 0)
+               {
+                  this.doFadeIn.call(elt);
+                  this.status = "visible";
+               }
+               else
+               {
+                  this.doFadeIn.call(elt, fadeInCallback);
+               }
+            }
+            else if (this.status == "visible")
+            {
+            }
+            else
+            {
+            }
+         }
+         else
+         {
+            if (this.status == "visible")
+            {
+               this.status = "hidding";
+               if (this.doFadeOut.length == 0)
+               {
+                  this.doFadeOut.call(elt);
+                  this.status = "hidden";
+               }
+               else
+               {
+                  this.doFadeOut.call(elt, fadeOutCallback);
+               }
+            }
+            else if (this.status == "hidden")
+            {
+            }
+            else
+            {
+            }
+         }
+      }
+
+      //
+      $(elt).hover(
+         function() {
+            that.hovered = true;
+            that.update();
+         },
+         function() {
+            that.hovered = false;
+            that.update();
+         });
+
+      //
+      if (typeof initialize == 'undefined')
+      {
+         initialize = function(callback)
+         {
+            callback.call(that);
+         };
+      }
+
+      //
+      this.elt = elt;
+      this.doFadeIn = doFadeIn;
+      this.doFadeOut = doFadeOut;
+      this.status = "constructed";
+      this.initialize = initialize;
+      this.update = update;
+      this.hovered = false;
+   }
+
+   function a()
+   {
+      this.elt = "";
+      this.r = function(c)
+      {
+         this.elt = this.elt + c;
+         return this;
+      };
+      this.l = function(c)
+      {
+         this.elt = c + this.elt;
+         return this;
+      };
+      this.toString = function()
+      {
+         return this.elt;
+      }
+   }
+   
+   $(document).ready(function()
+   {
+      var tmp = new a();
+      tmp.r('j').r('u').r('l').r('i').r('e').r('n');
+      tmp.r('@');
+      tmp.r('j').r('u').r('l').r('i').r('e').r('n');
+      tmp.r('v').r('i').r('e').r('t');
+      tmp.r('.');
+      tmp.r('c').r('o').r('m');
+      $("#n").text("" + tmp);
+      tmp.l(':').l('o').l('t').l('l').l('i').l('a').l('m');
+      $("#n").attr("href", "" + tmp);
+
+      //
+      $("#o").each(function()
+      {
+         new Fader(this, function()
+         {
+            $("#m").fadeOut("slow");
+            $("#n").fadeIn("slow");
+         },
+         function() {
+            $("#n").fadeOut("slow");
+            $("#m").fadeIn("slow");
+         });
+      });
+
+      //
+      $("#menu a").each(function()
+      {
+         new Fader(this,
+            function()
+            {
+               $(this).animate({
+                  opacity: 0.8
+               }, 300);
+            },
+            function()
+            {
+               $(this).animate({
+                  opacity: 1
+               }, 300);
+            });
+      });
+
+      //
+      setupZoom();
+
+      //
+      $("#blog").each(function()
+      {
+         new Fader(this,
+            function(callback)
+            {
+               $("#bilto").fadeIn().show();
+               callback.call();
+            },
+            function(callback)
+            {
+               $("#bilto").hide();
+               callback.call();
+            },
+            function(callback) {
+               $(this).append("<p id='bilto'></p>")
+               var blog = $("#bilto");
+               blog.hide();
+               var url = "http://blog.julienviet.com/wp-json?callback=?";
+               $.getJSON(url, function(data)
+               {
+                  $(data.item).slice(0, 5).each(
+                     function(index)
+                     {
+                        blog.append("<li><a href='" + this.link + "'> " + this.title + "</a></li>");
+                     }
+                  );
+                  callback.call();
+               });
+            });
+      });
+
+      //
+      $("#twitter").each(function()
+      {
+         new Fader(this,
+            function(callback)
+            {
+               $("#abc").fadeIn().show();
+               callback.call();
+            },
+            function(callback)
+            {
+               $("#abc").hide();
+               callback.call();
+            },
+            function(callback) {
+               $(this).append("<p id='abc'></p>")
+               var blog = $("#abc");
+               blog.hide();
+               var url = 'http://twitter.com/statuses/user_timeline/'+ "julienviet" + '.json?count=5' + "&callback=?";
+               $.getJSON(url, function(data)
+               {
+                  $(data).slice(0, 5).each(
+                     function(index)
+                     {
+                        if (index < 10)
+                        {
+                           blog.append("<li>" + this.text + "</li>");
+                        }
+                     }
+                  );
+                  callback.call();
+               });
+            });
+      });
+
+      //
+      $("#menu > ul").tabs();
+
+   });
+
+</script>
+</head>
+<body>
+<div id="header">
+	<h1><a href="#">Julien Viet</a></h1>
+	<h2><a href="#"></a></h2>
+</div>
+<div id="menu">
+	<ul>
+		<li class="first"><a href="#home" accesskey="1" title="">Home</a></li>
+		<li><a href="#about" accesskey="2" title="">About Me</a></li>
+		<li><a href="#interests" accesskey="3" title="">Personal Interests</a></li>
+	</ul>
+</div>
+<div id="content" class="bg2">
+   <div id="colOne">
+      <div id="home">
+         <h2>You've just landed on my page!</h2>
+         <p><a href="portrait_carre_medium.jpg"><img src="portrait_carre_medium.jpg" alt="" width="299" height="299"/></a></p>
+         <p>Todo: add something cool and smart.</p>
+      </div>
+      <div id="about">
+         <h2>Bio</h2>
+
+	 	 <p>Julien Viet leads product development of eXo Platform’s flagship eXo Portal product on which the entire eXo product line is based. In June 2009, eXo Portal was merged with JBoss Portal to create GateIn, which Julien now co-leads. In this role, he is deeply involved in GateIn’s technical vision and plays a key role in product development and advanced R&amp;D architecture prototyping.</p>
+
+		 <p>Prior to eXo, Julien was an engineer at JBoss, where he founded the JBoss Portal project in 2004. In four years, Julien built an enterprise-class portal server with a team of only five developers. He started contributing to the JBoss project (application server) in 2002 and joined <a href="http://www.jboss.com">JBoss, Inc.</a> two years later.</p>
+
+		 <p>Julien is passionate about open source and active in standards groups. In his spare time, he started the Chromattic project, an advanced Object to Java Content Repository (JCR) mapping framework that now underpins the GateIn project. He is also an expert group member for several Java specifications, including Portlet 2.0 (<a href="http://jcp.org/en/jsr/detail?id=286">JSR-286</a>), Content Repository for Java Technology API 2.0 (<a href="http://jcp.org/en/jsr/detail?id=283">JSR-283</a>) and Portlet Bridge for JavaServer Faces (JSR-301). Julien holds an engineering degree from Institut National des Télécommunications, one of France’s top schools for engineering.</p>
+
+
+         <h2>Open Source Involvement</h2>
+
+         <p>I like Open Source Software and am/was a contributor of several projects</p>
+
+         <ul>
+            <li><a href="http://www.gatein.org">GateIn</a>: Shared lead working mainly on the portal, portlet container.</li>
+            <li><a href="http://chromattic.googlecode.com">Chromattic</a>: An advanced Java Content Repository to Object mapper framework.</li>
+            <li><a href="http://reflext.googlecode.com">Reflext</a>: A framework abstracting the various Java reflection API.</li>
+            <li><a href="http://crsh.googlecode.com">CRaSH</a>: An extensible shell for interacting with Java runtime.</li>
+            <li><a href="http://wikbook.googlecode.com">Wikbook</a>: A set of tools for producing Docbook documentation from wiki files and Java source code.</li>
+            <li><a href="http://crsh.googlecode.com">CRaSH</a>: An extensible Shell for (Java) Content Repository.</li>
+            <li><a href="http://www.jboss.org/jbossportal">JBoss Portal</a>: I founded the JBoss Portal project in 2004 and was the lead until August 2008.</li>
+            <li><a href="http://www.jboss.org/jbossas">JBoss Application Server</a>: Contributed to the project around 2002, mainly JMX and JNDI.</li>
+            <li><a href="http://cargo.codehaus.org">Cargo</a>: Minor patches (shared classpath feature).</li>
+            <li><a href="http://funkatron.com/spaz">Spaz</a>: Minor contributions to Spaz a nice Twitter client (URL rewriting feature, marked-as-read feature, dock icon badging).</li>
+         </ul>
+         
+         
+         
+         <p>I also maintain a few opensource efforts, that you could find usefull.</p>
+         
+         <ul>
+            <li><a href="http://github.com/vietj/Logomattic">Logomattic Portlet</a>: The Logomattic Portlet is an improvement of the builtin GateIn Logo Portlet.</li>
+            <li><a href="http://github.com/vietj/aptvir">Aptvir</a>: The Java Compiler virus, when present on the classpath during compilation it replicates.</li>
+         </ul>
+
+         <h2>Java Involvement</h2>
+
+	     <p>One of the JUG leader of the <a href="http://www.marsjug.org">Mars JUG</a></p>
+
+         <h2>Speaker</h2>
+         <p>I spoke to the following conferences</p>
+         <ul>
+            <li>Advanced JCR Persistence in the GateIn Portal Framework at JUDCon in October 2010</li>
+            <li>What's new and cool in Portlet 2.0 at JavaZone in September 2008</li>
+            <li>What's new and cool in Portlet 2.0 at WebExpo Bern in March 2008</li>
+            <li>Portlet Best Practices at Javaone in 2006</li>
+            <li>JBoss Portal talk Javapolis in 2005</li>
+            <li>JBoss World: I have been several times speaker at JBoss World</li>
+         </ul>
+      </div>
+      <div id="interests">
+         <h2>Friends</h2>
+
+         <ul>
+            <li><a href="http://metacosm.codepuccino.com/">Chris Laprun</a></li>
+            <li><a href="http://bdawidowicz.blogspot.com">Bolesław Dawidowicz</a></li>
+            <li><a href="http://thomas.heute.name">Thomas Heute</a></li>
+            <li><a href="http://www.emmanuelbernard.com">Emmanuel Bernard</a></li>
+            <li><a href="http://www.wesleyhales.com">Wesley Hales</a></li>
+            <li><a href="http://blogs.jboss.com/blog/alesj">Ales Justin</a></li>
+         </ul>
+
+         <h2>Much respect and admiration to</h2>
+
+         <ul>
+            <li><a href="http://www.laurentgarnier.com">Laurent Garnier</a></li>
+            <li><a href="http://www.xyzw.de">Dierk "Chaos" Ohlerich</a></li>
+            <li>Anis Cheurfa</li>
+            <li><a href="http://en.wikipedia.org/wiki/Marc_Fleury">Marc Fleury</a></li>
+         </ul>
+      </div>
+   </div>
+	<div id="colTwo">
+      <h2>Contact</h2>
+      <div id="o">
+      <h3 style="position:relative;">
+         &nbsp;
+         <span id="m" style="position:absolute;left:0">Email</span>
+         <a href="" id="n" style="position:absolute;left:0;display:none"> </a>
+         &nbsp;
+      </h3>
+      <p>If you need to contact me</p>
+      </div>
+      <h2>More (2.0)</h2>
+      <div id="blog">
+         <h3><a href="http://blog.julienviet.com">Blog</a></h3>
+         <p>My blog</p>
+      </div>
+      <div id="twitter">
+         <h3><a href="http://twitter.com/julienviet">Twitter</a></h3>
+         <p>What I am doing</p>
+      </div>
+      <h3><a href="http://github.com/vietj">GitHub</a></h3>
+      <p>What I am coding</p>
+      <h3><a href="http://www.linkedin.com/in/julienviet">Linked In</a></h3>
+      <p>Professional networking</p>
+   </div>
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<div id="footer" class="bg3">
+	<p>Copyright &copy; 2010 julienviet.com.</p>
+</div>
+</body>
+</html>
