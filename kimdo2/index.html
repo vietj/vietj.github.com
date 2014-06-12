@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <style>
+    body { padding-top: 70px; }
+    table.menu tr td:last-child { text-align: right; }
+    table.description tr td:first-child { width: 25%; }
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Kim-Do</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#entrees">Entrées</a></li>
+        <li><a href="#grillades">Grillades</a></li>
+        <li><a href="#sushisashimi">Sushi et sashimi</a></li>
+        <li><a href="#formules">Formules</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#livraison">Livraison</a></li>
+        <li><a href="#restaurant">Restaurant</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1" id="kimdo">
+
+      <div class="jumbotron">
+        <h1>Kim-Do Sushi<small>Restaurant Japonais</small></h1>
+        <p>Spécialités à Marseille de</p>
+        <ul>
+          <li>Sushi</li>
+          <li>Sashimi</li>
+          <li>Grillade</li>
+          <li>Fruits de mer</li>
+        </ul>
+        <p>Restauration sur place, à emporter et livraison</p>
+      </div>
+
+      <div class="jumbotron" id="entrees">
+        <h2>Entrées</h2>
+        <table class="table table-condensed menu">
+          <caption>Sunomono <small>(macéré dans le vinaigre doux)</small></caption>
+          <tbody>
+          <tr><td>Assortiment de sunomono</td><td class="price">12,00€</td></tr>
+          <tr><td>Seiche</td><td class="price">10,00€</td></tr>
+          <tr><td>Poulpe</td><td class="price">10,00€</td></tr>
+          <tr><td>Coquillage</td><td class="price">12,00€</td></tr>
+          <tr><td>Maquereau</td><td class="price">10,00€</td></tr>
+          <tr><td>Crabe</td><td class="price">11,00€</td></tr>
+          <tr><td>Algue</td><td class="price">7,00€</td></tr>
+          </tbody>
+        </table>
+        <table class="table table-condensed menu">
+          <caption>Nuta <small>(pâte de soja aigre doux à moitié cru)</small></caption>
+          <tbody>
+          <tr><td>Assortiment de nuta</td><td class="price">12,00€</td></tr>
+          <tr><td>Seiche</td><td class="price">10,00€</td></tr>
+          <tr><td>Coquillage</td><td class="price">12,00€</td></tr>
+          <tr><td>Poulpe</td><td class="price">10,00€</td></tr>
+          <tr><td>Thon</td><td class="price">11,00€</td></tr>
+          <tr><td>Saumon</td><td class="price">11,00€</td></tr>
+          </tbody>
+        </table>
+        <table class="table table-condensed menu">
+          <caption>Wagarashi <small>(soja moutarde avec poisson cru)</small></caption>
+          <tbody>
+          <tr><td>Assortiment de wagarashi</td><td class="price">12,00€</td></tr>
+          <tr><td>Seiche</td><td class="price">10,00€</td></tr>
+          <tr><td>Thon</td><td class="price">11,00€</td></tr>
+          <tr><td>Coquillage</td><td class="price">12,00€</td></tr>
+          <tr><td>Saumon</td><td class="price">11,00€</td></tr>
+          <tr><td>Poulpe</td><td class="price">10,00€</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="jumbotron" id="grillades">
+        <h2>Grillades <small>sur place</small></h2>
+        <table class="table table-condensed menu">
+          <caption>Yakimono <small>(grillade)</small></caption>
+          <tbody>
+          <tr><td>Thon</td><td class="price">18,00€</td></tr>
+          <tr><td>Poisson chair blanche</td><td class="price">22,00€</td></tr>
+          <tr><td>Seiche</td><td class="price">18,00€</td></tr>
+          <tr><td>Saumon</td><td class="price">18,00€</td></tr>
+          <tr><td>Boeuf (4 brochettes)</td><td class="price">18,00€</td></tr>
+          <tr><td>Divers (boeuf, canard, poulet, gambas, boeuf fromage)</td><td class="price">18,00€</td></tr>
+          <tr><td>Poulet (4 brochettes)</td><td class="price">15,00€</td></tr>
+          <tr><td>Boeuf fromage (3 brochettes)</td><td class="price">15,00€</td></tr>
+          <tr><td>Canard (3 brochettes)</td><td class="price">18,00€</td></tr>
+          <tr><td>Tempura (beignets de légumes et fruits de mer)</td><td class="price">18,00€</td></tr>
+          <tr><td>Riz</td><td class="price">3,00€</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="jumbotron" id="sushisashimi">
+        <h2>Sushi et sashimi</h2>
+        <table class="table table-condensed menu description">
+          <caption>Sushi <small>(poisson cru sur canapé de riz)</small></caption>
+          <tbody>
+          <tr><td>Sushi</td><td>assortiment de sushi spécial</td><td class="price">26,00€</td></tr>
+          <tr><td>Sushi</td><td>assortiment de sushi</td><td class="price">20,00€</td></tr>
+          <tr><td>Chirashi</td><td>poisson cru dans un bol de riz</td><td class="price">20,00€</td></tr>
+          <tr><td>Chirashi</td><td>chirachi spécial</td><td class="price">26,00€</td></tr>
+          <tr><td>Tekadon</td><td>thon cru dans un bol de riz</td><td class="price">20,00€</td></tr>
+          <tr><td>Sakedon</td><td>saumon cru dans un bol de riz</td><td class="price">19,00€</td></tr>
+          <tr><td>Tekka-maki</td><td>maki sushi de thon cru</td><td class="price">18,00€</td></tr>
+          <tr><td>Sake-maki</td><td>maki sushi de saumon</td><td class="price">18,00€</td></tr>
+          <tr><td>Maki mori</td><td>sushi envelopped d'algue</td><td class="price">18,00€</td></tr>
+          <tr><td>Shinko maki</td><td>maki sushi de radi salé</td><td class="price">16,00€</td></tr>
+          <tr><td>Kappa maki</td><td>maki sushi de concombre</td><td class="price">14,00€</td></tr>
+          <tr><td>Kanpoyo maki</td><td>maki sushi de radi sucré</td><td class="price">17,00€</td></tr>
+          <tr><td>Futo maki</td><td>grand maki sushi</td><td class="price">18,00€</td></tr>
+          <tr><td>Temaki kakushu</td><td>garniture thon saumon</td><td class="price">18,00€</td></tr>
+          <tr><td>?????????</td><td>california maki sushi</td><td class="price">20,00€</td></tr>
+          </tbody>
+        </table>
+        <table class="table table-condensed menu description">
+          <caption>Sashimi <small>(poissons crus)</small></caption>
+          <tbody>
+          <tr><td>Mori awase</td><td>assortiment de sashimi spécial</td><td class="price">26,00€</td></tr>
+          <tr><td>Mori awase</td><td>assortiment de sashimi</td><td class="price">20,00€</td></tr>
+          <tr><td>Maguro</td><td>thon rouge</td><td class="price">19,00€</td></tr>
+          <tr><td>Toru</td><td>thon gras</td><td class="price">20,00€</td></tr>
+          <tr><td>Tai</td><td>daurade</td><td class="price">20,00€</td></tr>
+          <tr><td>Sake</td><td>saumon</td><td class="price">18,00€</td></tr>
+          <tr><td>Saba</td><td>maquereau</td><td class="price">13,00€</td></tr>
+          <tr><td>Ika</td><td>seiche</td><td class="price">15,00€</td></tr>
+          <tr><td>Tako</td><td>poulpe</td><td class="price">15,00€</td></tr>
+          <tr><td>Hirame</td><td>barbu</td><td class="price">20,00€</td></tr>
+          <tr><td>Aji</td><td>chinchard</td><td class="price">14,00€</td></tr>
+          <tr><td>Kai</td><td>coquillage</td><td class="price">20,00€</td></tr>
+          <tr><td>Iwashi</td><td>sardine</td><td class="price">13,00€</td></tr>
+          <tr><td>Ama ebi</td><td>crevette crue</td><td class="price">19,00€</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="jumbotron" id="formules">
+        <h2>Formules <small>sur place</small></h2>
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Formule découverte</h3>
+            <h4>29,00€</h4>
+            <ul>
+              <li>Sushi 13 pièces</li>
+              <li>Yakitori (brochette de poulet)</li>
+              <li>Tempura légumes</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h3>Formule zen</h3>
+            <h4>21,00€</h4>
+            <ul>
+              <li>Miso soupe</li>
+              <li>Sushi 13 pièces</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="jumbotron">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 id="livraison">Livraison</h4>
+            <p>Livraison à partir de 50 €, prévoir un délai de 2 heures: 4<sup>eme</sup>, 5<sup>eme</sup>, 6<sup>eme</sup>, 7<sup>eme</sup>, 8<sup>eme</sup>, 10<sup>eme</sup> et 12<sup>eme</sup> arrondissements</p>
+            <h4 id="restaurant">Restaurant et plats à emporter</h4>
+            <address>
+              4, rue Capazza<br>
+              13004 Marseille<br>
+              <a href="tel:0491340008">04 91 34 00 08</a>
+            </address>
+            <h4>Ouverture</h4>
+            <p>Du mardi au samedi, midi et soir
+            </p>
+          </div>
+          <div class="col-md-6">
+            <iframe class="thumbnail" width="300" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.fr/maps?f=q&amp;source=s_q&amp;hl=fr&amp;geocode=&amp;q=kim-do+marseille&amp;aq=&amp;sll=43.280391,5.380496&amp;sspn=0.411905,0.512238&amp;ie=UTF8&amp;hq=kim-do&amp;hnear=Marseille,+Bouches-du-Rh%C3%B4ne,+Provence-Alpes-C%C3%B4te+d'Azur&amp;ll=43.29233,5.384969&amp;spn=0.020478,0.036454&amp;t=m&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
