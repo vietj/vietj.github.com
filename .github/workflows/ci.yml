@@ -1,0 +1,12 @@
+name: Master workflow
+on:
+  push:
+    branches:
+      - '**'
+jobs:
+  Run:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run
+        run: echo "Master workflow"
