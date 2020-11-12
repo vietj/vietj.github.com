@@ -1,4 +1,4 @@
-name: Master workflow
+name: Other workflow
 on:
   push:
     branches:
@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run
-        run: echo "Master workflow"
+        run: echo "Other workflow"
